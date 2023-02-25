@@ -1,0 +1,214 @@
+{% extends 'dashboard/common.html' %}
+{% block isa %}{% endblock %}
+{% block pagetitle %}
+    知乎内容分析
+{% endblock %}
+{% block head %}
+    <!-- jQuery  -->
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/js/metisMenu.min.js"></script>
+    <script src="../static/assets/js/waves.js"></script>
+    <script src="../static/assets/js/jquery.slimscroll.js"></script>
+
+    <!--FooTable-->
+    {#    <script src="../static/assets/plugins/footable/js/footable.all.min.js"></script>#}
+    <!--FooTable Example-->
+    {#    <script src="../static/assets/pages/jquery.footable.js"></script>#}
+
+    <!-- App js -->
+    <script src="../static/assets/js/jquery.core.js"></script>
+    <script src="../static/assets/js/jquery.app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js"
+            integrity="sha512-sySOoQplygWETKm3HoW/V2tMWbW+5YN72uVutG7os+o3dAxJcJZZWb6S4doE6BTi/SOPkTlo/Y630jp58lNRsA=="
+            crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <!-- Start Page content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row" style="width: 90%">
+                <div class="col-12">
+                    <div class="card-box">
+                        <h4 class="header-title">问题标签去权分析</h4>
+                        <img oncontextmenu="return false;" ondragstart="return false;" width="100%"
+                             src="../static/img/wordhz.png" alt="">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="header-title">问题标签加权分析</h4>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <div class="chartjs-wrapper">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                            style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                            __idm_frm__="1040"></iframe>
+                                    <canvas id="chartjs-1" class="chartjs" width="1540" height="770"
+                                            style="display: block; height: 385px; width: 770px;"></canvas>
+                                    <script>new Chart(document.getElementById("chartjs-1"), {
+                                        "type": "bar",
+                                        "data": {
+                                            "labels": ["生活", "高考", "法律", "教育", "互联网", "调查类问题", "社会", "游戏"],
+                                            "datasets": [{
+                                                "label": "问题标签出现次数",
+                                                "data": [1246, 690, 617, 564, 512, 485, 432, 422],
+                                                "fill": false,
+                                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "rgba(255, 99, 55, 0.2)"],
+                                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "rgb(255, 99, 55)"],
+                                                "borderWidth": 1
+                                            }]
+                                        },
+                                        "options": {"scales": {"yAxes": [{"ticks": {"beginAtZero": true}}]}}
+                                    });</script>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="chartjs-wrapper">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                            style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                            __idm_frm__="1672"></iframe>
+                                    <canvas id="chartjs-2" class="chartjs" width="1540" height="770"
+                                            style="display: block; height: 385px; width: 770px;"></canvas>
+                                    <script>new Chart(document.getElementById("chartjs-2"), {
+                                        "type": "horizontalBar",
+                                        "data": {
+                                            "labels": ["学习", "生活", "留学", "考研", "推荐"],
+                                            "datasets": [{
+                                                "label": "频率前1K标签动词词频",
+                                                "data": [15, 6, 6, 6, 6],
+                                                "fill": false,
+                                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)"],
+                                                "borderWidth": 1
+                                            }]
+                                        },
+                                        "options": {"scales": {"xAxes": [{"ticks": {"beginAtZero": true}}]}}
+                                    });</script>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-box">
+                        <h4 class="header-title">问题TITLE去权分析</h4>
+
+                        <div class="chartjs-wrapper">
+                            <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                    style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                    __idm_frm__="334"></iframe>
+                            <canvas id="chartjs-0" class="chartjs" width="1540" height="400"
+                                    style="display: block; height: 385px; width: 770px;"></canvas>
+                            <script>new Chart(document.getElementById("chartjs-0"), {
+                                "type": "line",
+                                "data": {
+                                    "labels": ["评价", "中国", "体验", "游戏", "女生", "专业", "孩子", "公司", "电影", "问题", "大家", "美国", "大学", "日本"],
+                                    "datasets": [{
+                                        "label": "知乎问题TITLE名词分析",
+                                        "data": [1379, 531, 455, 361, 354, 254, 252, 246, 246, 244, 241, 239, 236, 206],
+                                        "fill": false,
+                                        "borderColor": "rgb(255,103,155)",
+                                        "lineTension": 0.1
+                                    }]
+                                },
+                                "options": {}
+                            });</script>
+                        </div>
+
+
+                    </div>
+
+                    <div class="card-box">
+                        <h4 class="m-t-0 header-title">知乎问题热度</h4>
+                        <p class="text-muted font-14 m-b-20">
+                            我们根据一定的算法计算关注者及浏览量来进行热度的排序。
+                        </p>
+
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th width="10%">#</th>
+                                <th width="50%">知乎问题</th>
+                                <th width="10%">关注者</th>
+                                <th width="10%">浏览量</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-active">
+                                <th scope="row">1</th>
+                                <td>你知道的最冷的冷知识是什么？</td>
+                                <td>408386</td>
+                                <td>701392146</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>有哪些堪称有毒的视频？</td>
+                                <td>253708</td>
+                                <td>586057464</td>
+                            </tr>
+                            <tr class="table-success">
+                                <th scope="row">3</th>
+                                <td>有哪些让你感觉惊艳的名字？</td>
+                                <td>321222</td>
+                                <td>536791851</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>有哪些圈子里才知道的小秘密？</td>
+                                <td>536055</td>
+                                <td>294674442</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">5</th>
+                                <td>室友的哪些不该看的东西被你看到了？</td>
+                                <td>59607</td>
+                                <td>588112141</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>有哪些令人拍案叫绝的推理桥段？</td>
+                                <td>320139</td>
+                                <td>402382089</td>
+                            </tr>
+                            <tr class="table-warning">
+                                <th scope="row">7</th>
+                                <td>女生有男朋友之后才知道的事情有哪些？</td>
+                                <td>158542</td>
+                                <td>488402730</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8</th>
+                                <td>你有哪些内行人才知道的省钱诀窍？</td>
+                                <td>580224</td>
+                                <td>166120081</td>
+                            </tr>
+                            <tr class="table-danger">
+                                <th scope="row">9</th>
+                                <td>谢娜为什么这么招人讨厌？</td>
+                                <td>70878</td>
+                                <td>514781777</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10</th>
+                                <td>哪些精彩的打斗片段让你念念不忘？</td>
+                                <td>163569</td>
+                                <td>425724770</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

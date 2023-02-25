@@ -1,0 +1,112 @@
+{% extends 'dashboard/common.html' %}
+{% block pagetitle %}
+    总览
+{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .uname {
+            animation: light 4s ease-in-out infinite;
+            transition: 1s;
+        }
+
+        .uname:hover {
+            transform: scale(1.15) rotate(720deg);
+        }
+    </style>
+    <!-- jQuery  -->
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/js/metisMenu.min.js"></script>
+    <script src="../static/assets/js/waves.js"></script>
+    <script src="../static/assets/js/jquery.slimscroll.js"></script>
+
+    <!--FooTable-->
+    {#    <script src="../static/assets/plugins/footable/js/footable.all.min.js"></script>#}
+    <!--FooTable Example-->
+    <script src="../static/assets/pages/jquery.footable.js"></script>
+
+    <!-- App js -->
+    <script src="../static/assets/js/jquery.core.js"></script>
+    <script src="../static/assets/js/jquery.app.js"></script>
+{% endblock %}
+
+{% block body %}
+    <!-- Start Page content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row" style="width: 80%; position: relative; left: 15px">
+                <div class="card-box ribbon-box" style="width: 80%;">
+                    <div class="ribbon ribbon-info">知乎简介</div>
+                    <p class="m-b-0">
+                        知乎是网络问答社区，连接各行各业的用户。用户分享着彼此的知识、经验和见解，为中文互联网源源不断地提供多种多样的信息。
+                        准确地讲，知乎更像一个论坛：用户围绕着某一感兴趣的话题进行相关的讨论，同时可以关注兴趣一致的人。对于概念性的解释，网络百科几乎涵盖了你所有的疑问；但是对于发散思维的整合，却是知乎的一大特色。
+                    </p>
+                    <p class="m-b-0">
+                        2017年11月8日，知乎入选时代影响力·中国商业案例TOP30。
+                    </p>
+                    <p class="m-b-0">
+                        2019年10月21日，胡润研究院发布《2019胡润全球独角兽榜》，知乎排名第138位。
+                    </p>
+                    <p class="m-b-0">
+                        2018年3月2日，北京网信办发布紧急通知，“知乎”平台因管理不严，传播违法违规信息，根据相关法律法规，要求各应用商店下架“知乎”App七天。6月6日，原有的“知识市场”业务升级为“知乎大学”。7月，知乎完成新一轮融资，融资额接近3亿美元。
+                    </p>
+                    <p class="m-b-0">
+                        2019年8月12日，知乎宣布完成F轮融资，总额4.34亿美元。10月，知乎直播功能正式上线。11月19日下午，“知乎百科”正式启动公共编辑计划，邀请用户共同参与百科的内容公共创作，进一步完善结构化的内容展示机制。
+                    </p>
+                </div>
+
+                {#                <div class="card-box ribbon-box" style="width: 80%;">#}
+                {#                    <div class="ribbon ribbon-warning">当前项目简介</div>#}
+                {#                    <p class="m-b-0">#}
+                {#                    </p>#}
+                {#                </div>#}
+
+                <div class="card-box ribbon-box" style="width: 80%;">
+                    <div class="ribbon ribbon-danger">当前项目团队成员</div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="text-center card-box">
+                                <div class="member-card pt-2 pb-2">
+                                    <div class="">
+                                        <h4 class="m-b-5 uname">孔繁辰</h4>
+                                        <p class="text-muted">项目 规划，数据爬取及答辩
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="text-center card-box">
+                                <div class="member-card pt-2 pb-2">
+                                    <div class="">
+                                        <h4 class="m-b-5 uname">李博洋</h4>
+                                        <p class="text-muted">数据 爬取，处理及分析
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-4">
+                            <div class="text-center card-box">
+                                <div class="member-card pt-2 pb-2">
+                                    <div class="">
+                                        <h4 class="m-b-5 uname">李晨阳</h4>
+                                        <p class="text-muted">Web，数据库 开发及部署
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

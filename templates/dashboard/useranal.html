@@ -1,0 +1,408 @@
+{% extends 'dashboard/common.html' %}
+{% block isa %}{% endblock %}
+{% block pagetitle %}
+    知乎用户分析
+{% endblock %}
+{% block head %}
+    <!-- jQuery  -->
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/js/metisMenu.min.js"></script>
+    <script src="../static/assets/js/waves.js"></script>
+    <script src="../static/assets/js/jquery.slimscroll.js"></script>
+    <!--FooTable-->
+    {#    <script src="../static/assets/plugins/footable/js/footable.all.min.js"></script>#}
+    <!--FooTable Example-->
+    {#    <script src="../static/assets/pages/jquery.footable.js"></script>#}
+
+    <!-- Chart JS -->
+    {#    <script src="../static/assets/plugins/chart.js/chart.bundle.js"></script>#}
+    {#    <script src="../static/assets/pages/jquery.chartjs.init.js"></script>#}
+    <!-- App js -->
+    <script src="../static/assets/js/jquery.core.js"></script>
+    <script src="../static/assets/js/jquery.app.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://gallery.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js"
+            integrity="sha512-sySOoQplygWETKm3HoW/V2tMWbW+5YN72uVutG7os+o3dAxJcJZZWb6S4doE6BTi/SOPkTlo/Y630jp58lNRsA=="
+            crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <!-- Start Page content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row" style="width: 90%">
+                <div class="col-12">
+                    <div class="card-box">
+                        <h4 class="header-title">用户性别分析</h4>
+
+                        <div class="text-center mt-4 mb-4">
+                            <div class="row">
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="card-box widget-flat border-custom bg-custom text-white">
+                                        <i class="fi-tag"></i>
+                                        <h3 class="m-b-10">24740</h3>
+                                        <p class="text-uppercase m-b-5 font-13 font-600">总用户</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="card-box bg-primary widget-flat border-primary text-white">
+                                        <i class="fi-archive"></i>
+                                        <h3 class="m-b-10">12546</h3>
+                                        <p class="text-uppercase m-b-5 font-13 font-600">男性用户</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="card-box bg-danger widget-flat border-danger text-white">
+                                        <i class="fi-help"></i>
+                                        <h3 class="m-b-10">6013</h3>
+                                        <p class="text-uppercase m-b-5 font-13 font-600">女性用户</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="card-box widget-flat border-success bg-success text-white">
+                                        <i class="fi-delete"></i>
+                                        <h3 class="m-b-10">6181</h3>
+                                        <p class="text-uppercase m-b-5 font-13 font-600">未知性别</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {#sex begin#}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="header-title">性别分布饼图</h4>
+                                    <div class="chartjs-wrapper">
+                                        <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                                style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                                __idm_frm__="828"></iframe>
+                                        <canvas id="chartjs-4" class="chartjs" width="1540" height="770"
+                                                style="display: block; height: 385px; width: 770px;"></canvas>
+                                        <script>new Chart(document.getElementById("chartjs-4"), {
+                                            "type": "doughnut",
+                                            "data": {
+                                                "labels": ["女性", "男性", "未知"],
+                                                "datasets": [{
+                                                    "label": "My First Dataset",
+                                                    "data": [6013, 12546, 6181],
+                                                    "backgroundColor": ["rgb(241, 85, 105)", "rgb(45, 123, 244)", "rgb(10, 207, 151)"]
+                                                }]
+                                            }
+                                        });</script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-box" style="width: 80%;">
+                                    <h4 class="header-title">结论</h4>
+                                    <br><br><br>
+                                    <div class="card m-b-30 text-white bg-purple">
+                                        <div class="card-body">
+                                            <blockquote class="card-bodyquote">
+                                                <p>在爬取到的24740名用户中</p>
+                                                <p>男性用户占50.7%</p>
+                                                <p>女性用户占24.3%</p>
+                                                <p>未知性别占25.0%</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {#sex end#}
+
+
+                    </div>
+
+                    <div class="card-box" style="height: 600px">
+                        <h4 class="header-title">用户地域分析</h4>
+                        <p class="text-muted font-14 m-b-20">
+                            下图示根据我们爬取的数据，生成的注册用户在<strong>中国境内</strong>的地域分布图。
+                        </p>
+                        <div id="main" style="width: 100%;height:100%;"></div>
+                        <script type="text/javascript">
+                            // 基于准备好的dom，初始化echarts实例
+                            var myChart = echarts.init(document.getElementById('main'));
+
+                            var mapName = 'china'
+                            var data = [
+                                {name: "北京", value: 14175},
+                                {name: "天津", value: 155},
+                                {name: "河北", value: 122},
+                                {name: "山西", value: 57},
+                                {name: "内蒙古", value: 36},
+                                {name: "辽宁", value: 168},
+                                {name: "吉林", value: 53},
+                                {name: "黑龙江", value: 53},
+                                {name: "上海", value: 1684},
+                                {name: "江苏", value: 583},
+                                {name: "浙江", value: 720},
+                                {name: "安徽", value: 141},
+                                {name: "福建", value: 208},
+                                {name: "江西", value: 78},
+                                {name: "山东", value: 307},
+                                {name: "河南", value: 192},
+                                {name: "湖北", value: 313},
+                                {name: "湖南", value: 218},
+                                {name: "重庆", value: 148},
+                                {name: "四川", value: 464},
+                                {name: "贵州", value: 21},
+                                {name: "云南", value: 53},
+                                {name: "西藏", value: 7},
+                                {name: "陕西", value: 164},
+                                {name: "甘肃", value: 25},
+                                {name: "青海", value: 3},
+                                {name: "宁夏", value: 7},
+                                {name: "新疆", value: 20},
+                                {name: "广东", value: 1720},
+                                {name: "广西", value: 60},
+                                {name: "海南", value: 24},
+                                {name: "台湾", value: 14},
+                                {name: "南海诸岛", value: 0},
+                            ];
+
+                            var geoCoordMap = {};
+
+
+                            /*获取地图数据*/
+                            myChart.showLoading();
+                            var mapFeatures = echarts.getMap(mapName).geoJson.features;
+                            myChart.hideLoading();
+                            mapFeatures.forEach(function (v) {
+                                // 地区名称
+                                var name = v.properties.name;
+                                // 地区经纬度
+                                geoCoordMap[name] = v.properties.cp;
+
+                            });
+
+
+                            var max = 480,
+                                min = 9; // todo
+                            var maxSize4Pin = 100,
+                                minSize4Pin = 20;
+
+                            var convertData = function (data) {
+                                var res = [];
+                                for (var i = 0; i < data.length; i++) {
+                                    var geoCoord = geoCoordMap[''];
+                                    if (geoCoord) {
+                                        res.push({
+                                            name: data[i].name,
+                                            value: geoCoord.concat(data[i].value),
+                                        });
+                                    }
+                                }
+                                return res;
+                            };
+                            option = {
+                                tooltip: {
+                                    padding: 0,
+                                    enterable: true,
+                                    transitionDuration: 1,
+                                    textStyle: {
+                                        color: '#000',
+                                        decoration: 'none',
+                                    },
+                                    // position: function (point, params, dom, rect, size) {
+                                    //   return [point[0], point[1]];
+                                    // },
+                                    formatter: function (params) {
+                                        var tipHtml = '';
+                                        tipHtml = '<div style="width:280px;height:180px;background:rgba(22,80,158,0.8);border:1px solid rgba(7,166,255,0.7)">'
+                                            + '<div style="width:100%;height:40px;line-height:40px;border-bottom:2px solid rgba(7,166,255,0.7);padding:0 20px">' + '<i style="display:inline-block;width:8px;height:8px;background:#16d6ff;border-radius:40px;">' + '</i>'
+                                            + '<span style="margin-left:10px;color:#fff;font-size:16px;">' + params.name + '</span>' + '</div>'
+                                            + '<div style="padding:20px">'
+                                            + '<p style="color:#fff;font-size:12px;">' + '<i style="display:inline-block;width:10px;height:10px;background:#16d6ff;border-radius:40px;margin:0 8px">' + '</i>'
+                                            + '注册用户：' + '<span style="color:#11ee7d;margin:0 6px;">' + params.value + '</span>' + '个' + '</p>'
+
+                                            + '</div>' + '</div>';
+                                        setTimeout(function () {
+                                            tooltipCharts(params.name);
+                                        }, 10);
+                                        return tipHtml;
+                                    }
+
+                                },
+
+                                visualMap: {
+                                    show: true,
+                                    min: 0,
+                                    max: 200,
+                                    left: '10%',
+                                    top: '10%',
+                                    calculable: true,
+                                    seriesIndex: [1],
+                                    inRange: {
+                                        color: ['#467bc0', '#04387b'] // 蓝绿
+                                    }
+                                },
+                                geo: {
+                                    show: true,
+                                    map: mapName,
+                                    label: {
+                                        normal: {
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            show: false,
+                                        }
+                                    },
+                                    roam: false,
+                                    itemStyle: {
+                                        normal: {
+                                            areaColor: '#023677',
+                                            borderColor: '#1180c7',
+                                        },
+                                        emphasis: {
+                                            areaColor: '#4499d0',
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: '散点',
+                                    type: 'scatter',
+                                    coordinateSystem: 'geo',
+                                    data: convertData(data),
+                                    symbolSize: function (val) {
+                                        return val[2] / 10;
+                                    },
+                                    label: {
+                                        normal: {
+                                            formatter: '{b}',
+                                            position: 'right',
+                                            show: true
+                                        },
+                                        emphasis: {
+                                            show: true
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#fff'
+                                        }
+                                    }
+                                },
+                                    {
+                                        type: 'map',
+                                        map: mapName,
+                                        geoIndex: 0,
+                                        aspectScale: 0.75, //长宽比
+                                        showLegendSymbol: false, // 存在legend时显示
+                                        label: {
+                                            normal: {
+                                                show: true
+                                            },
+                                            emphasis: {
+                                                show: false,
+                                                textStyle: {
+                                                    color: '#fff'
+                                                }
+                                            }
+                                        },
+                                        roam: true,
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#031525',
+                                                borderColor: '#3B5077',
+                                            },
+                                            emphasis: {
+                                                areaColor: '#2B91B7'
+                                            }
+                                        },
+                                        animation: false,
+                                        data: data
+                                    },
+                                    {
+                                        name: '点',
+                                        type: 'scatter',
+                                        coordinateSystem: 'geo',
+                                        zlevel: 6,
+                                    },
+
+
+                                ]
+                            };
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+
+                    </div>
+
+                    <div class="card-box">
+                        <h4 class="header-title">用户学校/专业分析</h4>
+
+                        {#sex begin#}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p></p>
+                                <div class="chartjs-wrapper">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                            style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                            __idm_frm__="1040"></iframe>
+                                    <canvas id="chartjs-1" class="chartjs" width="1540" height="770"
+                                            style="display: block; height: 385px; width: 770px;"></canvas>
+                                    <script>new Chart(document.getElementById("chartjs-1"), {
+                                        "type": "bar",
+                                        "data": {
+                                            "labels": ["北京大学", "清华大学", "复旦大学", "浙江大学", "上海交通大学", "武汉大学", "中山大学", "克莱登大学"],
+                                            "datasets": [{
+                                                "label": "学校分析",
+                                                "data": [283, 268, 149, 148, 135, 111, 107, 96],
+                                                "fill": false,
+                                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "rgba(255, 99, 55, 0.2)"],
+                                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "rgb(255, 99, 55)"],
+                                                "borderWidth": 1
+                                            }]
+                                        },
+                                        "options": {"scales": {"yAxes": [{"ticks": {"beginAtZero": true}}]}}
+                                    });</script>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <p></p>
+                                <div class="chartjs-wrapper">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1"
+                                            style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                                            __idm_frm__="1672"></iframe>
+                                    <canvas id="chartjs-2" class="chartjs" width="1540" height="770"
+                                            style="display: block; height: 385px; width: 770px;"></canvas>
+                                    <script>new Chart(document.getElementById("chartjs-2"), {
+                                        "type": "horizontalBar",
+                                        "data": {
+                                            "labels": ["计算机", "管理", "数学", "软件工程", "自动化", "设计", "金融", "心理学"],
+                                            "datasets": [{
+                                                "label": "专业分析",
+                                                "data": [309, 166, 146, 141, 122, 121, 117, 115],
+                                                "fill": false,
+                                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)"],
+                                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)"],
+                                                "borderWidth": 1
+                                            }]
+                                        },
+                                        "options": {"scales": {"xAxes": [{"ticks": {"beginAtZero": true}}]}}
+                                    });</script>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    {#sex end#}
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
